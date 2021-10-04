@@ -194,7 +194,8 @@ class paramClass:
 		self.crossoverProb=.6 # prob of crossing over a particular parent
 		self.mutationProb=.4 # prob of mutating a particular parent
 		self.rewire=False
-		self.async=False # run in asynchronous mode
+		self.asynchronous=False # run in asynchronous mode
+		#"async" is a keyword in Python3. Since the async function was never implemented in original Python2 Bonita we have just removed the async property from the paramClass for now. We will test for and remove all references to this property later. We will leave this as a placeholder for future implementations
 		self.verbose=True
 		self.bitFlipProb=.1 # prob of flipping bits inside mutation
 		self.sigmaNetwork=0
@@ -302,7 +303,7 @@ def syncBool(individual, model, simSteps, initValues, knockouts, knockins):
 def asyncBool(individual, model, simSteps, initValues, iters, knockouts, knockins):
 	sum1=[0 for x in range(0,len(initValues))]
 	# run iterations with different orderings
-	for i in range(0,params.iters):
+	for i in range(0, params.iters):
 		# do simulation. individual specifies the particular logic rules on the model. params is a generic holder for simulation parameters. 
 		# set up data storage for simulation, add step 0
 		newValue=list(initValues)
